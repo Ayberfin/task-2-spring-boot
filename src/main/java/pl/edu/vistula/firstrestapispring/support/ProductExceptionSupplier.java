@@ -1,0 +1,13 @@
+package pl.edu.vistula.firstrestapispring.support;
+
+import pl.edu.vistula.firstrestapispring.product.api.response.ProductResponse;
+import pl.edu.vistula.firstrestapispring.support.exception.ProductNotFoundException;
+
+import java.util.function.Supplier;
+
+public class ProductExceptionSupplier {
+
+    public static Supplier<ProductNotFoundException> productNotFound(Long id){
+        return () -> new ProductNotFoundException(id);
+    }
+}

@@ -1,0 +1,27 @@
+package pl.edu.vistula.firstrestapispring.support;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import pl.edu.vistula.firstrestapispring.shared.api.response.ErrorMessageResponse;
+import pl.edu.vistula.firstrestapispring.support.exception.ProductNotFoundException;
+
+
+@ControllerAdvice
+public class ProductExceptionAdvisor {
+
+    private static final Logger log = LoggerFactory.getLogger(ProductExceptionAdvisor.class);
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ErrorMessageResponse productNotFound(Exception e){
+        log.error(e.getMessage(), e);
+        return new ErrorMessageResponse(e.getLocalizedMessage());
+    }
+}
