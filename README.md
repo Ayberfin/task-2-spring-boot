@@ -129,7 +129,7 @@ All endpoints of the application were tested using Swagger UI.
 
 ## Author
 
-Student: Selman Uygurtürk  
+Student: Ayse Erdem
 Course: First REST API Spring  
 Task: #2 – CRUD REST API
 
